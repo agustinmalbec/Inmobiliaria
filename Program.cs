@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<InmobiliariaContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 2, 12)) // tu versión de MySQL
-    )
+        new MySqlServerVersion(new Version(8, 2, 12))
+        )
 );
 
 // Add services to the container.

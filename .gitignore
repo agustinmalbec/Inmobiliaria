@@ -1,0 +1,58 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+.vs/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+# Excluir si no tenés un feed privado, pero si restaurás con `dotnet restore` mejor ignorar:
+*.nuspec
+
+# Logs
+*.log
+
+# Configuración de IIS / servidor
+*.vspscc
+*.tmp
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pdb
+
+# Archivos generados por publicación
+publish/
+PublishProfiles/
+App_Data/
+
+# Archivos de sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archivos de sistema de macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos de sistema de Linux
+*~
+.nfs*
+
+# Secretos locales (⚠️ muy importante)
+appsettings.Development.json
+appsettings.Local.json

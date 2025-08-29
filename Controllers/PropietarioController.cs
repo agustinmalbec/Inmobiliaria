@@ -51,7 +51,7 @@ namespace Inmobiliaria.Controllers
             return View(propietario);
         }
 
-        // GET: Propietarios/Edit/5
+        // GET: Propietarios/Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -62,7 +62,7 @@ namespace Inmobiliaria.Controllers
             return View(propietario);
         }
 
-        // POST: Propietarios/Edit/5
+        // POST: Propietarios/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Dni,Telefono,Email")] Propietario propietario)
@@ -78,7 +78,7 @@ namespace Inmobiliaria.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Propietarios.Any(e => e.Id == propietario.Id))
+                    if (!_context.Propietarios.Any(prop => prop.Id == propietario.Id))
                         return NotFound();
                     else
                         throw;
@@ -88,19 +88,18 @@ namespace Inmobiliaria.Controllers
             return View(propietario);
         }
 
-        // GET: Propietarios/Delete/5
+        // GET: Propietarios/Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
 
-            var propietario = await _context.Propietarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var propietario = await _context.Propietarios.FirstOrDefaultAsync(prop => prop.Id == id);
             if (propietario == null) return NotFound();
 
             return View(propietario);
         }
 
-        // POST: Propietarios/Delete/5
+        // POST: Propietarios/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
