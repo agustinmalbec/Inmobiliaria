@@ -1,116 +1,65 @@
 using Microsoft.AspNetCore.Mvc;
-using Inmobiliaria.Data;
 using Inmobiliaria.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace Inmobiliaria.Controllers
+namespace Inmobiliaria.Controllers;
+
+public class PropietarioController : Controller
 {
-    public class PropietariosController : Controller
+    private readonly ILogger<PropietarioController> _logger;
+    private PropietarioRepository repository;
+    public PropietarioController(ILogger<PropietarioController> logger)
     {
-        private readonly InmobiliariaContext _context;
+        _logger = logger;
+        repository = new PropietarioRepository();
+    }
 
-        public PropietariosController(InmobiliariaContext context)
-        {
-            _context = context;
-        }
+    public IActionResult Index()
+    {
+        var propietarios = repository.GetAll();
+        return View(propietarios);
+    }
 
-        // GET: Propietarios
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Propietarios.ToListAsync());
-        }
+    public IActionResult Create()
+    {
+        return View();
+    }
 
-        // GET: Propietarios/Details
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null) return NotFound();
+    [HttpPost]
+    public IActionResult Create(Propietario propietario)
+    {
+        repository.InsertPropietario(propietario);
+        return RedirectToAction(nameof(Index));
+    }
 
-            var propietario = await _context.Propietarios.FirstOrDefaultAsync(prop => prop.Id == id);
-            if (propietario == null) return NotFound();
+    public IActionResult Edit(int id)
+    {
+        if (id == 0) return View();
+        var propietario = repository.GetPropietarioById(id);
+        return View(propietario);
+    }
 
-            return View(propietario);
-        }
+    [HttpPost]
+    public IActionResult Edit(Propietario propietario)
+    {
+        repository.EditPropietario(propietario);
+        return RedirectToAction(nameof(Index));
+    }
 
-        // GET: Propietarios/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+    public IActionResult Details(int id)
+    {
+        var propietario = repository.GetPropietarioById(id);
+        return View(propietario);
+    }
+    public IActionResult Delete(int id)
+    {
+        var propietario = repository.GetPropietarioById(id);
+        return View(propietario);
+    }
 
-        // POST: Propietarios/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Dni,Telefono,Email")] Propietario propietario)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(propietario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(propietario);
-        }
-
-        // GET: Propietarios/Edit
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var propietario = await _context.Propietarios.FindAsync(id);
-            if (propietario == null) return NotFound();
-
-            return View(propietario);
-        }
-
-        // POST: Propietarios/Edit
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Dni,Telefono,Email")] Propietario propietario)
-        {
-            if (id != propietario.Id) return NotFound();
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(propietario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!_context.Propietarios.Any(prop => prop.Id == propietario.Id))
-                        return NotFound();
-                    else
-                        throw;
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(propietario);
-        }
-
-        // GET: Propietarios/Delete
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var propietario = await _context.Propietarios.FirstOrDefaultAsync(prop => prop.Id == id);
-            if (propietario == null) return NotFound();
-
-            return View(propietario);
-        }
-
-        // POST: Propietarios/Delete
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var propietario = await _context.Propietarios.FindAsync(id);
-            if (propietario != null)
-            {
-                _context.Propietarios.Remove(propietario);
-                await _context.SaveChangesAsync();
-            }
-            return RedirectToAction(nameof(Index));
-        }
+    [HttpPost]
+    public IActionResult DeleteConfirmed(int id)
+    {
+        repository.DeletePropietario(id);
+        return RedirectToAction(nameof(Index));
     }
 }

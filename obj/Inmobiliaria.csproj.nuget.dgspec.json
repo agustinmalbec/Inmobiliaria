@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Proyectos\\Inmobiliaria\\Inmobiliaria.csproj": {}
+    "C:\\Users\\AGUSTIN\\Desktop\\Inmobiliaria\\Inmobiliaria.csproj": {}
   },
   "projects": {
-    "D:\\Proyectos\\Inmobiliaria\\Inmobiliaria.csproj": {
+    "C:\\Users\\AGUSTIN\\Desktop\\Inmobiliaria\\Inmobiliaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Proyectos\\Inmobiliaria\\Inmobiliaria.csproj",
+        "projectUniqueName": "C:\\Users\\AGUSTIN\\Desktop\\Inmobiliaria\\Inmobiliaria.csproj",
         "projectName": "Inmobiliaria",
-        "projectPath": "D:\\Proyectos\\Inmobiliaria\\Inmobiliaria.csproj",
+        "projectPath": "C:\\Users\\AGUSTIN\\Desktop\\Inmobiliaria\\Inmobiliaria.csproj",
         "packagesPath": "C:\\Users\\AGUSTIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Proyectos\\Inmobiliaria\\obj\\",
+        "outputPath": "C:\\Users\\AGUSTIN\\Desktop\\Inmobiliaria\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AGUSTIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -44,13 +44,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
+            "MySql.Data": {
               "target": "Package",
-              "version": "[9.0.8, )"
-            },
-            "Pomelo.EntityFrameworkCore.MySql": {
-              "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.4.0, )"
             }
           },
           "imports": [
