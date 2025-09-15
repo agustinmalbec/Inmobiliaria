@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Inmobiliaria.Models.Inquilino>
+﻿@model IEnumerable<Inmobiliaria.Models.Inmueble>
 
 @{
     ViewData["Title"] = "Inquilinos";
 }
 
-<h1>Inquilinos</h1>
+<h1>Inmuebles</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
@@ -14,18 +14,16 @@
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.Id)</th>
-            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-            <th>@Html.DisplayNameFor(model => model.Apellido)</th>
+            <th>@Html.DisplayNameFor(model => model.Direccion)</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (Inquilino item in Model)
+        @foreach (Inmueble item in Model)
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Nombre</td>
-                <td>@item.Apellido</td>
+                <td>@item.Direccion</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalles</a> |

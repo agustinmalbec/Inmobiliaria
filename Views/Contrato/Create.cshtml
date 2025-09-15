@@ -1,0 +1,32 @@
+@model Inmobiliaria.Models.Contrato
+
+@{
+    ViewData[index: "Title"] = "Crear Contrato";
+}
+
+<h1>Crear Contrato</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Contrato_inquilino">Inquilino</label>
+        <select asp-for="Contrato_inquilino" class="form-control" asp-items="@(ViewBag.Inquilinos)"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Contrato_inmueble">Inmueble</label>
+        <select asp-for="Contrato_inmueble" class="form-control" asp-items="@(ViewBag.Inmuebles)"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Fecha_desde">Fecha de inicio</label>
+        <input asp-for="Fecha_desde" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Fecha_hasta">Fecha de finalizacion</label>
+        <input asp-for="Fecha_hasta" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Monto">Monto del alquiler</label>
+        <input asp-for="Monto" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

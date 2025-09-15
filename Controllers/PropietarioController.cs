@@ -25,6 +25,7 @@ public class PropietarioController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Create(Propietario propietario)
     {
         repository.InsertPropietario(propietario);
@@ -39,6 +40,7 @@ public class PropietarioController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Edit(Propietario propietario)
     {
         repository.EditPropietario(propietario);

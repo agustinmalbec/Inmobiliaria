@@ -25,6 +25,7 @@ public class InquilinoController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Create(Inquilino inquilino)
     {
         repository.InsertInquilino(inquilino);
@@ -39,6 +40,7 @@ public class InquilinoController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Edit(Inquilino inquilino)
     {
         repository.EditInquilino(inquilino);

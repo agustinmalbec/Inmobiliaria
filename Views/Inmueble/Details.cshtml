@@ -1,0 +1,23 @@
+@model Inmobiliaria.Models.Inmueble
+
+@{
+    ViewData["Title"] = "Detalles del Inmmueble";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Inmueble</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Direccion</dt>
+        <dd class="col-sm-10">@Model.Direccion</dd>
+
+        <dt class="col-sm-2">Propietario</dt>
+        <dd class="col-sm-10">@ViewBag.Propietario.ToString()</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</p>

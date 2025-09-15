@@ -13,11 +13,16 @@ namespace Inmobiliaria.Models
         public string? Apellido { get; set; }
 
         [Required]
-        public string? Dni { get; set; }
+        public required string Dni { get; set; }
 
         [Required]
         public string? Telefono { get; set; }
 
         public string? Email { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Nombre} {Apellido}";
+        }
     }
 }

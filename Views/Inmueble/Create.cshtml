@@ -1,0 +1,21 @@
+@model Inmobiliaria.Models.Inmueble
+
+@{
+    ViewData["Title"] = "Crear Inmueble";
+}
+
+<h1>Crear Inmueble</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Direccion"></label>
+        <input asp-for="Direccion" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Inmueble_propietario"></label>
+        <select asp-for="Inmueble_propietario" class="form-control" asp-items="@(ViewBag.Propietarios)"></select>
+
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
